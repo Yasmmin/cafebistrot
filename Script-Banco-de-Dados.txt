@@ -1,0 +1,11 @@
+-- Criar o banco de dados
+CREATE DATABASE IF NOT EXISTS bistrot;
+USE bistrot;
+
+-- Criar a tabela de clientes
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(60),
+    email VARCHAR(100),
+    senha VARCHAR(255) /* A senha deve ter um tamanho razoável para criptografia */
+);

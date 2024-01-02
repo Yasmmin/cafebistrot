@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Inicial() {
   // Estado para controlar a autenticação
@@ -15,9 +15,9 @@ function Inicial() {
   // Configurando o Axios para incluir cookies nas solicitações
   axios.defaults.withCredentials = true;
 
-  //  verificar a autenticação ao carregar o componente
+  // Verificar a autenticação ao carregar o componente
   useEffect(() => {
-    axios.get('http://localhost:8081')
+    axios.get("http://localhost:8081")
       .then(res => {
         if (res.data.Status === "Sucesso!") {
           setAuth(true);
@@ -30,23 +30,22 @@ function Inicial() {
       .catch(err => console.log(err));
   }, []);
 
-// Função para realizar o logout
-const handleLogout = () => {
-  axios.get('http://localhost:8081/logout')
-    .then(() => {
-      // Recarrega a página após o logout
-      window.location.reload(true);
-    })
-    .catch(err => console.log(err));
-};
-
+  // Função para realizar o logout
+  const handleLogout = () => {
+    axios.get("http://localhost:8081/logout")
+      .then(() => {
+        // Recarrega a página após o logout
+        window.location.reload(true);
+      })
+      .catch(err => console.log(err));
+  };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 text-center">
       {auth ? (
         // Se autenticado, exibe o nome do usuário e o botão de logout
         <div>
-          <h3>Você foi autorizado --- {nome}</h3>
+          <h3>Você foi autorizado - {nome}</h3>
           <button className="btn btn-danger" onClick={handleLogout}>
             Sair da conta
           </button>
